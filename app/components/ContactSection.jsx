@@ -41,7 +41,7 @@ export default function ContactSection() {
             <Phone className="w-6 h-6 text-blue-300" />
             <div>
               <h4 className="text-white font-medium">Phone</h4>
-              <p className="text-gray-300">+91 6303404492</p>
+              <p className="text-gray-300">N/A</p>
             </div>
           </motion.div>
 
@@ -51,9 +51,9 @@ export default function ContactSection() {
             <div>
               <h4 className="text-white font-medium">Location</h4>
               <p className="text-gray-300">BLS a.s.b.l.
-Petite Somme 2
-6940 DURBUY
-Belgium</p>
+<br>Petite Somme 2</br>
+<br>6940 DURBUY</br>
+<br>Belgium</br></p>
             </div>
           </motion.div>
         </div>
