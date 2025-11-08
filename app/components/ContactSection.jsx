@@ -32,7 +32,7 @@ export default function ContactSection() {
             <Mail className="w-6 h-6 text-blue-300" />
             <div>
               <h4 className="text-white font-medium">Email</h4>
-              <p className="text-gray-300">apekshasmec@gmail.com</p>
+              <p className="text-gray-300">info@vanivillage.org</p>
             </div>
           </motion.div>
 
@@ -50,7 +50,10 @@ export default function ContactSection() {
             <MapPin className="w-6 h-6 text-blue-300" />
             <div>
               <h4 className="text-white font-medium">Location</h4>
-              <p className="text-gray-300">Hyderabad, Telangana, India</p>
+              <p className="text-gray-300">BLS a.s.b.l.
+Petite Somme 2
+6940 DURBUY
+Belgium</p>
             </div>
           </motion.div>
         </div>
