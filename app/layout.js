@@ -10,8 +10,8 @@ const bricolage = Bricolage_Grotesque({
 });
 
 export const metadata = {
-  title: "Apeksha",
-  description: "Apeksha - St. Martin's Engineering College",
+  title: "Vani Village",
+  description: "Vani Village",
 };
 
 export default function RootLayout({ children }) {

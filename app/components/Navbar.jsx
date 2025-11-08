@@ -95,7 +95,7 @@ export default function Navbar() {
         >
           {/* Logo */}
           <Link href="/" className="text-xl font-bold text-white">
-            APEKSHA
+            VANIVILLAGE
           </Link>
 
           {/* Desktop Nav Links */}

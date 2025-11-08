@@ -46,8 +46,8 @@ export default function HeroSection({
           style={{ scale: imageScale, y: imageY }}
         >
           <img
-            src="/apeksha_herologo.png"
-            alt="Apeksha Foundation initiative"
+            src="/vanivillage_herologo.png"
+            alt="Vani Village initiative"
             className="h-full w-full object-cover"
           />
           {/* Enhanced Gradient Overlay for better text readability */}
@@ -70,7 +70,7 @@ export default function HeroSection({
               className="flex flex-col gap-y-2"
             >
               <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-md sm:text-5xl md:text-6xl lg:text-7xl">
-                Apeksha Foundation
+                Vani Village
               </h1>
               <p className="text-md font-light text-indigo-100/90 sm:text-lg md:text-xl">
                 Empowering youth, fostering creativity, and driving social

@@ -10,8 +10,8 @@ const missionData = {
   "education-programs": {
     title: "Education Programs",
     shortDescription: "Our mission is to close the gap in access to quality education, promoting a comprehensive understanding of the world and fostering tolerant, inclusive societies.",
-    image: "/apeksha_herologo.png",
-    detailedDescription: "At Apeksha Foundation, we believe that education is the cornerstone of social progress and individual empowerment. Our Education Programs are designed to bridge the gap between traditional learning and modern educational needs, ensuring that every student has access to quality education regardless of their background or circumstances.",
+    image: "/vanivillage_herologo.png",
+    detailedDescription: "At Vani Village, we believe that education is the cornerstone of social progress and individual empowerment. Our Education Programs are designed to bridge the gap between traditional learning and modern educational needs, ensuring that every student has access to quality education regardless of their background or circumstances.",
     keyFeatures: [
       "Scholarship programs for underprivileged students",
       "Digital literacy workshops and computer training",

@@ -7,10 +7,10 @@ Create a `.env.local` file in the root directory with the following content:
 
 ```env
 # MongoDB Connection String
-MONGO_URI=mongodb://localhost:27017/apeksha
+MONGO_URI=mongodb://localhost:27017/vanivillage
 
 # Alternative: MongoDB Atlas connection string
-# MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/apeksha?retryWrites=true&w=majority
+# MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/vanivillage?retryWrites=true&w=majority
 ```
 
 ### 2. MongoDB Setup Options
@@ -18,13 +18,13 @@ MONGO_URI=mongodb://localhost:27017/apeksha
 #### Option A: Local MongoDB
 1. Install MongoDB locally
 2. Start MongoDB service
-3. Use: `MONGO_URI=mongodb://localhost:27017/apeksha`
+3. Use: `MONGO_URI=mongodb://localhost:27017/vanivillage`
 
 #### Option B: MongoDB Atlas (Cloud)
 1. Create account at [MongoDB Atlas](https://www.mongodb.com/atlas)
 2. Create a new cluster
 3. Get connection string
-4. Use: `MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/apeksha?retryWrites=true&w=majority`
+4. Use: `MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/vanivillage?retryWrites=true&w=majority`
 
 ### 3. Install Dependencies
 ```bash

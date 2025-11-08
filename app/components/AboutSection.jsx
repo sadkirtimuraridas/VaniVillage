@@ -11,7 +11,7 @@ const initiatives = [
     slug: "education-programs",
     description:
       "Our mission is to close the gap in access to quality education, promoting a comprehensive understanding of the world and fostering tolerant, inclusive societies.",
-    image: "/apeksha_herologo.png",
+    image: "/vanivillage_herologo.png",
   },
   {
     title: "Talent Showcase",
