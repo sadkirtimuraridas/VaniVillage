@@ -51,9 +51,9 @@ export default function ContactSection() {
             <div>
               <h4 className="text-white font-medium">Location</h4>
               <p className="text-gray-300">BLS a.s.b.l.
-<br>Petite Somme 2</br>
-<br>6940 DURBUY</br>
-<br>Belgium</br></p>
+<br />Petite Somme 2
+<br />6940 DURBUY
+<br />Belgium</p>
             </div>
           </motion.div>
         </div>
