@@ -41,7 +41,7 @@ export default function ContactSection() {
             <Phone className="w-6 h-6 text-blue-300" />
             <div>
               <h4 className="text-white font-medium">Phone</h4>
-              <p className="text-gray-300">N/A</p>
+              <p className="text-gray-300">NA</p>
             </div>
           </motion.div>
 
