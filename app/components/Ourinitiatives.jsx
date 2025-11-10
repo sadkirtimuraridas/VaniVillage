@@ -157,29 +157,27 @@ export default function InitiativesSection() {
             Vaikuntha Gardens
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg text-gray-400">
-            Vaikuntha Gardens is based on a combination of permaculture and Devotional Meditative Experiences. 
+            Vaikuntha Gardens is based on a combination of permaculture and Devotional Meditative Experiences. <br />
 
 
 
-Permaculture is a creative design process based on whole-systems thinking informed by ethics and design principles. It is a fully applied philosophy and technology where sustainable and regenerative solutions are sought over an approach where only the immediate result is considered. This results in preserved ecosystems leading to sustainable gardening. 
+Permaculture is a creative design process based on whole-systems thinking informed by ethics and design principles. It is a fully applied philosophy and technology where sustainable and regenerative solutions are sought over an approach where only the immediate result is considered. This results in preserved ecosystems leading to sustainable gardening. <br />
 
 
 
-Devotional Meditative Experiences purify our consciousness to awaken our loving propensities to God and each other. The devotees serving with Vanipedia are engaged with Srila Prabhupada's teachings to build his Vani-temple. A high level of spiritual discipline is required. Our gardens will create an environment to help that discipline to be nurtured.
-
-
-
-140 m² green house
-40 m² garden lounge
-fruit trees
-berries
-vegetables
-flowers
-sitting places to chant and associate together
-
+Devotional Meditative Experiences purify our consciousness to awaken our loving propensities to God and each other. The devotees serving with Vanipedia are engaged with Srila Prabhupada's teachings to build his Vani-temple. A high level of spiritual discipline is required. Our gardens will create an environment to help that discipline to be nurtured.<br />
+<p><ul>
+  <li>140 m² green house</li>
+  <li>40 m² garden lounge</li>
+  <li>fruit trees</li>
+  <li>berries</li>
+  <li>vegetables</li>
+  <li>flowers</li>
+  <li>sitting places to chant and associate together</li>
+  </ul></p>
 
 Srila Prabhupada explains his mission in 1975, "We are trying to set a perfect example according to the Bhagavad-gita as it is, how to execute simple living and high thinking. We are not interested in any material comforts of life which are limited and temporary. We are interested in solving the real problems of life, birth, death, old-age, and disease. These problems must be solved, and Krishna gives the formula in the Bhagavad-gita. So, we are preaching that simple formula given by Krishna, and people are trying it and finding real happiness in life, therefore the Hare Krishna movement is an undeniable success."
-
+<br />
 
 
 Our Vani Village and Vaikuntha Gardens are being built to better facilitate Bhaktivedanta Library Services and Vanipedia's dedication to assist Srila Prabhupada's movement sustaining its undeniable success.
