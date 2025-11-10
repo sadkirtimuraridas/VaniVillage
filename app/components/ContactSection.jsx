@@ -21,9 +21,7 @@ export default function ContactSection() {
         </h2>
 
         <p className="text-lg sm:text-xl text-gray-300 mb-12 leading-relaxed">
-          We are at St. Martin’s Engineering College. Forms for application are{" "}
-          <span className="text-blue-300 font-semibold">closed</span>. For
-          collaborations, inquiries, or support, you can contact us below.
+          For collaborations, inquiries, or support, you can contact us below.
         </p>
 
         <div className="space-y-6 text-left">

@@ -11,7 +11,7 @@ const missionData = {
     title: "Education Programs",
     shortDescription: "Our mission is to close the gap in access to quality education, promoting a comprehensive understanding of the world and fostering tolerant, inclusive societies.",
     image: "/vanivillage_herologo.png",
-    detailedDescription: "At Vani Village, we believe that education is the cornerstone of social progress and individual empowerment. Our Education Programs are designed to bridge the gap between traditional learning and modern educational needs, ensuring that every student has access to quality education regardless of their background or circumstances.",
+    detailedDescription: "In 2018, Bhaktivedanta Library Services a.s.b.l. purchased a 3,500 m² plot of land adjacent to Radhadesh. We are now building 680 meters of floor space on three levels.This multipurpose building will have storage for books, a 60 m² working space for vanipedia.org, six living rooms (with a communal kitchen) and 2 two-bedroom apartments. With the remaining land we will create a first class functional garden to feed the team along with lots of space for meditation and relaxing for all those who come to visit.",
     keyFeatures: [
       "Scholarship programs for underprivileged students",
       "Digital literacy workshops and computer training",
