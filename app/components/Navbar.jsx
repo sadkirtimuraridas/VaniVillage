@@ -14,7 +14,7 @@ export default function Navbar() {
   const navItems = [
     { name: "Home", path: "/", sectionId: "home" },
     { name: "About", path: "/about", sectionId: "about" },
-    { name: "Our Initiatives", path: "/our-initiatives", sectionId: "initiatives" },
+    { name: "Vaikuntha Gardens", path: "/our-initiatives", sectionId: "initiatives" },
     { name: "Gallery", path: "/gallery", sectionId: "gallery" },
     { name: "Contact", path: "/contact", sectionId: "contact" },
   ];

@@ -8,17 +8,12 @@ import Link from "next/link";
 // Mission data with detailed information
 const missionData = {
   "education-programs": {
-    title: "Education Programs",
+    title: "Vani Village",
     shortDescription: "Our mission is to close the gap in access to quality education, promoting a comprehensive understanding of the world and fostering tolerant, inclusive societies.",
     image: "/vanivillage_herologo.png",
     detailedDescription: "In 2018, Bhaktivedanta Library Services a.s.b.l. purchased a 3,500 m² plot of land adjacent to Radhadesh. We are now building 680 meters of floor space on three levels.This multipurpose building will have storage for books, a 60 m² working space for vanipedia.org, six living rooms (with a communal kitchen) and 2 two-bedroom apartments. With the remaining land we will create a first class functional garden to feed the team along with lots of space for meditation and relaxing for all those who come to visit.",
     keyFeatures: [
-      "Scholarship programs for underprivileged students",
-      "Digital literacy workshops and computer training",
-      "Language learning programs (English, Hindi, regional languages)",
-      "STEM education initiatives with hands-on learning",
-      "Career counseling and guidance sessions",
-      "Educational material distribution and library setup"
+      
     ],
     impact: {
       studentsHelped: "500+",
@@ -27,9 +22,7 @@ const missionData = {
       workshopsConducted: "100+"
     },
     upcomingEvents: [
-      "Digital Literacy Workshop - March 2024",
-      "Scholarship Application Drive - April 2024",
-      "Career Guidance Seminar - May 2024"
+      
     ]
   },
   "talent-showcase": {
