@@ -46,7 +46,7 @@ export default function HeroSection({
           style={{ scale: imageScale, y: imageY }}
         >
           <img
-            src="/vanivillage_herologo.png"
+            src="/Vanivillage+Website+-+Banner-1920w.webp"
             alt="Vani Village initiative"
             className="h-full w-full object-cover"
           />
