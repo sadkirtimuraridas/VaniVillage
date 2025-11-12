@@ -3,6 +3,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ChevronDown, ArrowRight } from "lucide-react";
 // import AboutSection from "../about/page";
 
@@ -58,7 +59,7 @@ export default function HeroSection({
         <div className="relative z-10 flex h-full flex-col items-center justify-center">
           {/* Animated Text & Button Wrapper */}
           <motion.div
-            className="flex max-w-5xl flex-col items-center gap-y-8 px-6 text-center text-white md:gap-y-12"
+            className="flex max-w-5xl flex-col items-center md:items-end gap-y-8 px-6 text-center md:text-right text-white md:gap-y-12"
             style={{ opacity: textOpacity, y: textY }}
             variants={containerVariants}
             initial="hidden"
@@ -67,24 +68,26 @@ export default function HeroSection({
             {/* Main Heading & Sub-heading */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col gap-y-2"
+              className="flex flex-col gap-y-2 items-center md:items-end"
             >
+              <br /><br /><br /><br /><br /><br /><br />
+              
               <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-md sm:text-5xl md:text-6xl lg:text-7xl">
                 Vani Village
               </h1>
               <p className="text-md font-light text-indigo-100/90 sm:text-lg md:text-xl">
-                Empowering youth, fostering creativity, and driving social
+                <br /><br />Empowering youth, fostering creativity, and driving social
                 impact across India.
               </p>
             </motion.div>
 
-            {/* Handwritten Style Tagline with SVG Underline */}
+            {/* Handwritten Style Tagline with SVG Underline 
             <motion.div className="relative" variants={itemVariants}>
               <p className="font-handwriting text-3xl text-blue-300 md:text-4xl lg:text-5xl">
-                Dream. Dare. Do.
+              Dream. Dare. Do. 
               </p>
               <svg
-                className="absolute -bottom-4 left-1/2 w-64 -translate-x-1/2 md:-bottom-6 md:w-80 lg:w-96"
+                className="absolute -bottom-4 right-0 w-64 md:-bottom-6 md:w-80 lg:w-96"
                 viewBox="0 0 400 30"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +95,7 @@ export default function HeroSection({
                 <motion.path
                   d="M10 15 Q100 5, 200 12 T390 18"
                   stroke="#60A5FA" // Brighter blue for better visibility
-                  strokeWidth="3"
+                  strokeWidth="3" 
                   strokeLinecap="round"
                   fill="none"
                   initial={{ pathLength: 0 }}
@@ -100,14 +103,17 @@ export default function HeroSection({
                   transition={{ duration: 1.5, delay: 1.2, ease: "circOut" }}
                 />
               </svg>
-            </motion.div>
+            </motion.div> */}
 
             {/* Call-to-Action Button */}
             <motion.div variants={itemVariants}>
-              <button className="group flex items-center gap-x-2 rounded-full border-2 border-white bg-white/10 px-6 py-3 text-base font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:scale-105 active:scale-95 md:px-8 md:py-4 md:text-lg">
-                Get Involved
+              <Link
+                href="/offering"
+                className="group inline-flex items-center gap-x-2 rounded-full border-2 border-white bg-white/10 px-6 py-3 text-base font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:scale-105 active:scale-95 md:px-8 md:py-4 md:text-lg"
+              >
+                Śrīla Prabhupāda's Disappearance Offering
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </button>
+              </Link>
             </motion.div>
           </motion.div>
 
