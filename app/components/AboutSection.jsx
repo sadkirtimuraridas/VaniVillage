@@ -10,28 +10,28 @@ const initiatives = [
     title: "Education Programs",
     slug: "education-programs",
     description:
-      "Our mission is to close the gap in access to quality education, promoting a comprehensive understanding of the world and fostering tolerant, inclusive societies.",
-    image: "/Vanivillage+Website+-+Banner-1920w.webp",
+      "Vani Village continues this mission through learning, discussion, and sharing Śrīla Prabhupāda’s wisdom in a living, practical way.",
+    image: "/vanivillage_herologo.png",
   },
   {
-    title: "Talent Showcase",
+    title: "Construction & Infrastructure",
     slug: "talent-showcase",
     description:
-      "We build platforms where students can showcase diverse talents, from arts to technology, helping them gain confidence and recognition for their unique skills.",
+      "This project will create a shelter for high thinking (Vani Village) and simple living (Vaikuntha Gardens). Each structure is being built to support spiritual culture — spaces for study, service, and reflection in harmony with nature.",
     image: "/talent.jpg",
   },
   {
-    title: "Social Change",
+    title: "Sustainability",
     slug: "social-change",
     description:
-      "To be the voice of youth, we lead community-focused projects and awareness campaigns that address local challenges and drive meaningful social change.",
+      "The programme of the adjacent Vaikuntha Gardens (permaculture, meditation-garden etc.",
     image: "/socialchange.jpeg",
   },
   {
-    title: "Leadership Building",
+    title: "Community Life",
     slug: "leadership-building",
     description:
-      "Shaping the leaders of tomorrow is core to our vision. We offer workshops and real-world opportunities for students to develop crucial leadership skills.",
+      "News posts, progress updates, volunteer life, events under the Vani Village umbrella",
     image: "/leadership.jpeg",
   },
 ];
@@ -59,7 +59,7 @@ export default function AboutSection() {
           transition={{ duration: 0.6 }}
           className="text-center text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"
         >
-          Upcoming Mission in Action
+          About Our Mission
         </motion.h2>
 
         {/* Interactive Circles */}

@@ -12,11 +12,11 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
 
   const navItems = [
-    { name: "Home", path: "/", sectionId: "home" },
-    { name: "About", path: "/about", sectionId: "about" },
-    { name: "Vaikuntha Gardens", path: "/our-initiatives", sectionId: "initiatives" },
-    { name: "Gallery", path: "/gallery", sectionId: "gallery" },
-    { name: "Contact", path: "/contact", sectionId: "contact" },
+    { name: "Home", path: "/", sectionId: "home", hash: "/" },
+    { name: "About", path: "/", sectionId: "about", hash: "/#about" },
+    { name: "Vaikuntha Gardens", path: "/", sectionId: "initiatives", hash: "/#initiatives" },
+    { name: "Gallery", path: "/", sectionId: "gallery", hash: "/#gallery" },
+    { name: "Contact", path: "/", sectionId: "contact", hash: "/#contact" },
   ];
 
   // Scroll spy functionality
@@ -95,7 +95,7 @@ export default function Navbar() {
         >
           {/* Logo */}
           <Link href="/" className="text-xl font-bold text-white">
-            VANIVILLAGE
+            Vani Village
           </Link>
 
           {/* Desktop Nav Links */}
@@ -106,9 +106,9 @@ export default function Navbar() {
                 : pathname === item.path;
               
               return (
-                <button
+                <Link
                   key={item.path}
-                  onClick={() => pathname === "/" ? scrollToSection(item.sectionId) : null}
+                  href={item.hash}
                   className={`relative rounded-full px-4 py-2 text-sm font-medium
                              transition-colors ${
                                isActive
@@ -129,7 +129,7 @@ export default function Navbar() {
                     />
                   )}
                   <span className="relative z-20">{item.name}</span>
-                </button>
+                </Link>
               );
             })}
           </div>
@@ -165,14 +165,9 @@ export default function Navbar() {
                   
                   return (
                     <motion.div key={item.path} variants={menuItemVariants}>
-                      <button
-                        onClick={() => {
-                          if (pathname === "/") {
-                            scrollToSection(item.sectionId);
-                          } else {
-                            setMobileMenuOpen(false);
-                          }
-                        }}
+                      <Link
+                        href={item.hash}
+                        onClick={() => setMobileMenuOpen(false)}
                         className={`block w-full text-left rounded-lg px-4 py-3 text-lg font-semibold ${
                           isActive
                             ? "bg-white text-black"
@@ -180,7 +175,7 @@ export default function Navbar() {
                         }`}
                       >
                         {item.name}
-                      </button>
+                      </Link>
                     </motion.div>
                   );
                 })}

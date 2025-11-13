@@ -157,18 +157,18 @@ export default function InitiativesSection() {
             Vaikuntha Gardens
           </h1>
           <div className="mx-auto mt-6 max-w-3xl text-lg text-gray-400 space-y-4">
-            <p>
+            <p style={{ textAlign: "left" }}>
               Vaikuntha Gardens is based on a combination of permaculture and Devotional Meditative Experiences.
             </p>
 
-            <p>
+            <p style={{ textAlign: "left" }}>
               Permaculture is a creative design process based on whole-systems thinking informed by ethics and design principles. It is a fully applied philosophy and technology where sustainable and regenerative solutions are sought over an approach where only the immediate result is considered. This results in preserved ecosystems leading to sustainable gardening.
             </p>
 
-            <p>
+            <p style={{ textAlign: "left" }}>
               Devotional Meditative Experiences purify our consciousness to awaken our loving propensities to God and each other. The devotees serving with Vanipedia are engaged with Srila Prabhupada's teachings to build his Vani-temple. A high level of spiritual discipline is required. Our gardens will create an environment to help that discipline to be nurtured.
             </p>
-
+<p style={{ textAlign: "left" }}>
             <ul className="list-disc list-inside space-y-1 text-gray-200">
               <li>140 m² green house</li>
               <li>40 m² garden lounge</li>
@@ -178,69 +178,15 @@ export default function InitiativesSection() {
               <li>flowers</li>
               <li>sitting places to chant and associate together</li>
             </ul>
-
-            <p>
+</p>
+            <p style={{ textAlign: "left" }}>
               Srila Prabhupada explains his mission in 1975, "We are trying to set a perfect example according to the Bhagavad-gita as it is, how to execute simple living and high thinking. We are not interested in any material comforts of life which are limited and temporary. We are interested in solving the real problems of life, birth, death, old-age, and disease. These problems must be solved, and Krishna gives the formula in the Bhagavad-gita. So, we are preaching that simple formula given by Krishna, and people are trying it and finding real happiness in life, therefore the Hare Krishna movement is an undeniable success."
             </p>
-
-            <p>
+            <p style={{ textAlign: "left" }}>
               Our Vani Village and Vaikuntha Gardens are being built to better facilitate Bhaktivedanta Library Services and Vanipedia's dedication to assist Srila Prabhupada's movement sustaining its undeniable success.
             </p>
           </div>
         </motion.div>
-
-        {/* Loading State */}
-        {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[...Array(4)].map((_, i) => (
-              <div
-                key={i}
-                className="h-80 rounded-3xl bg-gray-800/50 animate-pulse"
-              />
-            ))}
-          </div>
-        ) : initiatives.length === 0 ? (
-          // Empty State
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center py-16"
-          >
-            <div className="bg-gray-800/30 backdrop-blur-lg rounded-2xl p-12 border border-gray-700/50 max-w-md mx-auto">
-              <div className="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
-                <Calendar size={32} className="text-blue-400" />
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-3">
-                No Events Available
-              </h3>
-              <p className="text-gray-400 mb-6">
-                We're currently working on organizing new initiatives. Check
-                back soon for exciting events and programs!
-              </p>
-              <div className="text-sm text-gray-500">
-                Want to stay updated? Contact us to be notified about upcoming
-                events.
-              </div>
-            </div>
-          </motion.div>
-        ) : (
-          // Events Grid
-          <motion.div
-            className="grid grid-cols-1 gap-8 md:grid-cols-2"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-          >
-            {initiatives.map((initiative, idx) => (
-              <InitiativeCard
-                key={initiative._id}
-                initiative={initiative}
-                size={getCardSize(idx)}
-              />
-            ))}
-          </motion.div>
-        )}
       </div>
     </div>
   );
