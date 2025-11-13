@@ -101,7 +101,7 @@ export default function AboutSection() {
                   animate={{ color: isActive ? "#FFFFFF" : "#9CA3AF" }}
                 >
                   {isActive ? (
-                    <span className="font-handwriting text-4xl md:text-5xl leading-tight text-white">
+                    <span className="font-handwriting text-2xl md:text-3xl leading-tight text-white">
                       {item.title.split(" ")[0]}
                     </span>
                   ) : (

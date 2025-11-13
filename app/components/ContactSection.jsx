@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 export default function ContactSection() {
   return (
@@ -57,7 +57,7 @@ export default function ContactSection() {
 
 {/* Opening Hours */}
           <motion.div whileHover={{ x: 5 }} className="flex items-center gap-4">
-            <MapPin className="w-6 h-6 text-blue-300" />
+            <Clock className="w-6 h-6 text-blue-300" />
             <div>
               <h4 className="text-white font-medium">Opening Hours</h4>
               <p className="text-gray-300">Monday Closed
