@@ -73,8 +73,8 @@ export default function AboutSection() {
                   animate={{ scale: isActive ? 1.08 : 1 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                {/* Background Image */}
-                <AnimatePresence>
+                {/* Background Image */} 
+                <AnimatePresence> {/*}
                   {isActive && (
                     <motion.div
                       initial={{ opacity: 0 }}
@@ -89,8 +89,23 @@ export default function AboutSection() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70" />
                     </motion.div>
-                  )}
+                  )} */}
                 </AnimatePresence>
+            <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="absolute inset-0 overflow-hidden rounded-full"
+                    >
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/70" />
+                    </motion.div>
+
+                      
 
                 {/* Outline */}
                 <div className="absolute inset-0 rounded-full border border-gray-700/70" />
@@ -117,13 +132,13 @@ export default function AboutSection() {
         {/* Description + Link */}
         <div className="mt-16 grid grid-cols-1 items-start gap-10 lg:grid-cols-3">
           <div className="max-w-2xl text-center lg:col-span-2 lg:text-left">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="popLayout">
               <motion.p
                 key={activeIndex}
                 initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -25 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.0 }}
                 className="text-lg leading-relaxed text-gray-300 sm:text-xl"
               >
                 {initiatives[activeIndex].description}
