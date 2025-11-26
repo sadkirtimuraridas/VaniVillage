@@ -41,7 +41,27 @@ export default function GallerySection() {
                 className="h-56 w-full object-cover transition-transform duration-200"
               />
             </motion.div>
+
+
+
+
           ))}
+
+          
+
+
+<div className="flex justify-center items-center">
+  <video
+    src="/intro.mp4"
+    autoPlay
+    muted
+    loop
+    className="w-full max-w-3xl rounded-lg"
+  />
+</div>
+
+
+
         </div>
       </div>
     </section>

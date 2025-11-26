@@ -7,6 +7,11 @@ export default function OfferingPage() {
           <h1><b><center><span style={{ color: "gold" }}>Just For Today</span></center></b></h1>
             <br/><br/>
 
+            <audio controls src="/Visnu+Murti+Prabhu+-+Prayer(Opening+Day+-+VV).mp3" className="w-full mt-4">
+  Your browser does not support audio playback.
+</audio>
+<br/><br/>
+
             Just for today, Śrīla Prabhupāda,<br/>
 Please allow us to meet you, as we have never met you before.
 <br/><br/>
