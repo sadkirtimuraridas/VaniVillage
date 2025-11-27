@@ -5,18 +5,30 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Play, X } from "lucide-react";
 
 const videos = [
+  // Local video
   {
     type: "local",
     src: "/gallery/videos/intro.mp4",
     title: "Vani Village Intro",
     description: "Introduction to the Vani Village project.",
   },
-  {
-    type: "youtube",
-    videoId: "NIyClYhBjJ0",
-    title: "Vani Village Documentary",
-    description: "Journey and vision of Vani Village.",
-  },
+
+  // YouTube videos
+  { type: "youtube", videoId: "NIyClYhBjJ0", title: "Vani Village Documentary" },
+  { type: "youtube", videoId: "lH6a853Mf4A", title: "Vani Village Update 1" },
+  { type: "youtube", videoId: "2YZP8PvvokU", title: "Vani Village Update 2" },
+  { type: "youtube", videoId: "T9aUMzeav5I", title: "Construction Progress" },
+  { type: "youtube", videoId: "2CNUvAfThOU", title: "Development Update" },
+  { type: "youtube", videoId: "ZtnRYL42f5Q", title: "Village Walkthrough" },
+  { type: "youtube", videoId: "5rKkxs7vz5c", title: "Seva in Progress" },
+  { type: "youtube", videoId: "O8UqV-KEhac", title: "Vision Talk" },
+  { type: "youtube", videoId: "eg5HzhRUby8", title: "Temple Construction" },
+  { type: "youtube", videoId: "dVqZdV6_2qI", title: "Volunteer Service" },
+  { type: "youtube", videoId: "vsK8SxVf_Eo", title: "Daily Activities" },
+  { type: "youtube", videoId: "svF8zXUguBo", title: "Spiritual Progress" },
+  { type: "youtube", videoId: "CLUnwNufncY", title: "Community Service" },
+  { type: "youtube", videoId: "rqqIVuXrUZA", title: "Project Overview" },
+  { type: "youtube", videoId: "frOA5sEwV-E", title: "Future Plans" },
 ];
 
 export default function VideosGalleryPage() {
@@ -24,55 +36,56 @@ export default function VideosGalleryPage() {
 
   return (
     <main className="min-h-screen bg-[#f9f9f3] pt-32 pb-16">
-      <div className="mx-auto w-[90%] max-w-5xl">
+      <div className="mx-auto w-[90%] max-w-6xl">
+
         {/* Heading */}
-        <div className="mb-8 text-center">
-          <h1 className="inline-block rounded-2xl bg-[#0a1a2f] px-6 py-3 text-2xl font-semibold text-white shadow-lg">
-            Video Gallery
+        <div className="mb-10 text-center">
+          <h1 className="inline-block rounded-2xl bg-[#0a1a2f] px-8 py-3 text-2xl font-semibold text-white shadow-lg">
+            The Making of Vani Village Video Gallery
           </h1>
           <p className="mt-3 text-sm text-neutral-600">
-            Watch the story and progress of Vani Village.
+            Watch the story and growth of Vani Village.
           </p>
         </div>
 
         {/* Video Grid */}
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
           {videos.map((video, index) => (
             <motion.button
               key={index}
               onClick={() => setActiveVideo(video)}
-              className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-md transition hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#0a1a2f]/60"
+              className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-md transition hover:shadow-xl focus:outline-none"
               whileHover={{ y: -4 }}
             >
               {/* Thumbnail */}
-              <div className="relative aspect-video w-full overflow-hidden bg-black">
+              <div className="relative aspect-video w-full bg-black overflow-hidden">
                 {video.type === "local" ? (
                   <video
                     src={video.src}
                     muted
                     playsInline
-                    className="h-full w-full object-cover opacity-80 transition duration-300 group-hover:scale-105 group-hover:opacity-100"
+                    className="h-full w-full object-cover opacity-80 group-hover:scale-105 transition"
                   />
                 ) : (
                   <img
                     src={`https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`}
                     alt={video.title}
-                    className="h-full w-full object-cover opacity-80 transition duration-300 group-hover:scale-105 group-hover:opacity-100"
+                    className="h-full w-full object-cover opacity-80 group-hover:scale-105 transition"
                   />
                 )}
 
-                {/* Play overlay */}
-                <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/20">
+                {/* Play Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40">
                   <div className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-[#0a1a2f] shadow-lg">
                     <Play size={18} />
-                    <span>Play Video</span>
+                    Play
                   </div>
                 </div>
               </div>
 
-              {/* Text */}
-              <div className="flex flex-1 flex-col px-4 py-3 text-left">
-                <h2 className="text-base font-semibold text-[#0a1a2f]">
+              {/* Title */}
+              <div className="px-4 py-3 text-left">
+                <h2 className="text-sm font-semibold text-[#0a1a2f] truncate">
                   {video.title}
                 </h2>
                 {video.description && (
@@ -103,10 +116,11 @@ export default function VideosGalleryPage() {
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
+
               {/* Close button */}
               <button
                 onClick={() => setActiveVideo(null)}
-                className="absolute -top-10 right-0 rounded-full border border-white/30 bg-black/40 p-2 text-white shadow-lg backdrop-blur"
+                className="absolute -top-10 right-0 rounded-full bg-black/60 p-2 text-white shadow-lg"
               >
                 <X size={22} />
               </button>
@@ -117,12 +131,12 @@ export default function VideosGalleryPage() {
                   <video
                     src={activeVideo.src}
                     autoPlay
-                    controls={false}
+                    controls
                     className="h-full w-full object-contain"
                   />
                 ) : (
                   <iframe
-                    src={`https://www.youtube.com/embed/${activeVideo.videoId}?autoplay=1&controls=0&modestbranding=1&rel=0&showinfo=0&fs=0`}
+                    src={`https://www.youtube.com/embed/${activeVideo.videoId}?autoplay=1&controls=0&rel=0&modestbranding=1`}
                     className="h-full w-full"
                     allow="autoplay; encrypted-media"
                     allowFullScreen
@@ -131,9 +145,10 @@ export default function VideosGalleryPage() {
                 )}
               </div>
 
-              <p className="mt-3 text-center text-sm text-neutral-200">
+              <p className="mt-4 text-center text-sm text-white">
                 {activeVideo.title}
               </p>
+
             </motion.div>
           </motion.div>
         )}
