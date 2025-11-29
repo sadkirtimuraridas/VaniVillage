@@ -24,7 +24,7 @@ export default function Navbar() {
       ],
     },
 
-    { name: "Vani Village", sectionId: "vani-village", hash: "/#vani-village" },
+    { name: "Vani Village Global", sectionId: "vani-village", hash: "/vani-village" },
     { name: "Vaikuntha Gardens", sectionId: "initiatives", hash: "/#initiatives" },
 
     {
@@ -36,6 +36,7 @@ export default function Navbar() {
       ],
     },
 
+    { name: "Blog", sectionId: "contact", hash: "/blog" },
     { name: "Contact", sectionId: "contact", hash: "/#contact" },
 
     {
@@ -50,7 +51,15 @@ export default function Navbar() {
       ],
     },
 
-    { name: "Support Us", hash: "/support-us" },
+    // ✅ SUPPORT US PAGE + DROPDOWN
+    {
+      name: "Support Us",
+      hash: "/support-us",
+      dropdown: true,
+      children: [
+        { name: "Apply for Service", hash: "/service" },
+      ],
+    },
 
     {
       name: "Donate",
@@ -59,17 +68,17 @@ export default function Navbar() {
     },
   ];
 
-  // Scroll spy (only for homepage sections)
+  // Scroll spy only for homepage
   useEffect(() => {
     if (pathname !== "/") return;
 
     const handleScroll = () => {
-      const sections = navItems.filter(i => i.sectionId).map(item => item.sectionId);
-      const scrollPosition = window.scrollY + 120;
+      const sections = navItems.filter(i => i.sectionId).map(i => i.sectionId);
+      const scrollPos = window.scrollY + 120;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i]);
-        if (section && section.offsetTop <= scrollPosition) {
+        if (section && section.offsetTop <= scrollPos) {
           setActiveSection(sections[i]);
           break;
         }
@@ -96,19 +105,19 @@ export default function Navbar() {
         transition={{ duration: 0.5 }}
         className="fixed top-4 left-0 right-0 z-50 mx-auto w-[96%] max-w-7xl"
       >
-        <nav className="flex items-center justify-between flex-nowrap rounded-2xl bg-[#0a1a2f] px-6 py-3 shadow-lg">
+        <nav className="flex items-center justify-between rounded-2xl bg-[#0a1a2f] px-6 py-3 shadow-lg">
 
           {/* LOGO */}
-          <Link href="/" className="text-xl font-bold text-white whitespace-nowrap">
+          <Link href="/" className="text-xl font-bold text-white">
             Vani Village
           </Link>
 
           {/* DESKTOP MENU */}
-          <div className="hidden md:flex items-center gap-1 whitespace-nowrap">
+          <div className="hidden md:flex items-center gap-1">
 
             {navItems.map((item) => {
 
-              // External Link (Donate)
+              // ✅ External
               if (item.external) {
                 return (
                   <a
@@ -116,20 +125,24 @@ export default function Navbar() {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="ml-2 px-4 py-1.5 rounded-full text-sm font-bold bg-yellow-400 text-black hover:bg-yellow-300 transition"
+                    className="ml-2 px-4 py-1.5 rounded-full text-sm font-bold bg-yellow-400 text-black hover:bg-yellow-300"
                   >
                     {item.name}
                   </a>
                 );
               }
 
-              // Dropdown
+              // ✅ Dropdown WITH CLICKABLE PARENT LINK
               if (item.dropdown) {
                 return (
                   <div key={item.name} className="relative group">
-                    <button className="rounded-full px-3 py-1.5 text-sm font-medium text-neutral-300 hover:text-white whitespace-nowrap">
+
+                    <Link
+                      href={item.hash || "#"}
+                      className="rounded-full px-3 py-1.5 text-sm font-medium text-neutral-300 hover:text-white"
+                    >
                       {item.name}
-                    </button>
+                    </Link>
 
                     <div className="hidden group-hover:block absolute left-0 mt-2 bg-black/70 border border-white/10 rounded-xl p-2 shadow-xl backdrop-blur-xl w-56">
                       {item.children.map((sub) =>
@@ -158,10 +171,9 @@ export default function Navbar() {
                 );
               }
 
-              // Normal Link
-              const isActive = pathname === "/"
-                ? activeSection === item.sectionId
-                : pathname === item.hash;
+              // ✅ Regular Link
+              const isActive =
+                pathname === "/" ? activeSection === item.sectionId : pathname === item.hash;
 
               return (
                 <Link
@@ -171,15 +183,13 @@ export default function Navbar() {
                   ${isActive ? "text-black" : "text-neutral-300 hover:text-white"}`}
                 >
                   {isActive && (
-                    <motion.span
-                      layoutId="bubble"
-                      className="absolute inset-0 bg-white rounded-full"
-                    />
+                    <motion.span layoutId="bubble" className="absolute inset-0 bg-white rounded-full" />
                   )}
-                  <span className="relative z-20 whitespace-nowrap">{item.name}</span>
+                  <span className="relative z-20">{item.name}</span>
                 </Link>
               );
             })}
+
           </div>
 
           {/* MOBILE BUTTON */}
@@ -218,28 +228,26 @@ export default function Navbar() {
                       {item.name}
                     </a>
                   ) : item.dropdown ? (
-                    item.children.map((sub) =>
-                      sub.url ? (
-                        <a
-                          key={sub.name}
-                          href={sub.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-4 py-3 rounded-lg text-lg text-neutral-200 hover:bg-white/10"
-                        >
-                          {sub.name}
-                        </a>
-                      ) : (
+                    <div key={item.name}>
+                      <Link
+                        href={item.hash}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block px-4 py-3 rounded-lg text-lg text-neutral-200 hover:bg-white/10"
+                      >
+                        {item.name}
+                      </Link>
+
+                      {item.children.map((sub) => (
                         <Link
                           key={sub.name}
                           href={sub.hash}
                           onClick={() => setMobileMenuOpen(false)}
-                          className="px-4 py-3 rounded-lg text-lg text-neutral-200 hover:bg-white/10"
+                          className="ml-4 block px-4 py-2 text-sm text-neutral-300 hover:bg-white/10 rounded-lg"
                         >
                           {sub.name}
                         </Link>
-                      )
-                    )
+                      ))}
+                    </div>
                   ) : (
                     <Link
                       key={item.name}
