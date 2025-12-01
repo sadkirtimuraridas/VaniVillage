@@ -38,7 +38,7 @@ const constructionEvents = [
   {
     date: "May 30, 2023",
     title: "Books Delivered",
-    image: "/images/construction/may-30-2023-books.jpg",
+    image: "/images/construction/IMG-20250113-WA0194-2880w.jpg",
   },
   {
     date: "Jun 18, 2023",
@@ -53,7 +53,7 @@ const constructionEvents = [
   {
     date: "Dec 28, 2023",
     title: "Building Landscaping Completed",
-    image: "/images/construction/dec-28-2023-landscaping.jpg",
+    image: "/images/construction/concreting+3-1920w.jpg",
   },
 ];
 

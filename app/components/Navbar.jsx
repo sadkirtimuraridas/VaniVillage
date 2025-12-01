@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,7 +10,10 @@ export default function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const closeTimer = useRef(null);
 
+  // ✅ NAV DATA
   const navItems = [
     { name: "Home", sectionId: "home", hash: "/" },
 
@@ -19,7 +22,7 @@ export default function Navbar() {
       dropdown: true,
       children: [
         { name: "Our Mission & Vision", hash: "/about/mission" },
-        { name: "About Project", hash: "/#about" },
+        
         { name: "Timeline History", hash: "/about/timeline" },
       ],
     },
@@ -51,7 +54,6 @@ export default function Navbar() {
       ],
     },
 
-    // ✅ SUPPORT US PAGE + DROPDOWN
     {
       name: "Support Us",
       hash: "/support-us",
@@ -63,22 +65,22 @@ export default function Navbar() {
 
     {
       name: "Donate",
-      url: "https://www.vanivillage.org/payment-page",
       external: true,
+      url: "https://www.vanivillage.org/payment-page",
     },
   ];
 
-  // Scroll spy only for homepage
+  // ✅ Scroll Spy
   useEffect(() => {
     if (pathname !== "/") return;
 
     const handleScroll = () => {
       const sections = navItems.filter(i => i.sectionId).map(i => i.sectionId);
-      const scrollPos = window.scrollY + 120;
+      const scrollPos = window.scrollY + 150;
 
       for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i]);
-        if (section && section.offsetTop <= scrollPos) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.offsetTop <= scrollPos) {
           setActiveSection(sections[i]);
           break;
         }
@@ -90,34 +92,40 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
-  const menuVariants = {
-    hidden: { opacity: 0, y: -10 },
-    visible: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -10 },
-  };
+  const dropdownHandlers = (name) => ({
+    onMouseEnter: () => {
+      clearTimeout(closeTimer.current);
+      setOpenDropdown(name);
+    },
+    onMouseLeave: () => {
+      closeTimer.current = setTimeout(() => {
+        setOpenDropdown(null);
+      }, 250);
+    }
+  });
 
   return (
     <>
       {/* NAVBAR */}
       <motion.header
-        initial={{ y: -100, opacity: 0 }}
+        initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="fixed top-4 left-0 right-0 z-50 mx-auto w-[96%] max-w-7xl"
+        transition={{ duration: 0.4 }}
+        className="fixed top-4 left-0 right-0 z-50 mx-auto max-w-7xl w-[95%]"
       >
-        <nav className="flex items-center justify-between rounded-2xl bg-[#0a1a2f] px-6 py-3 shadow-lg">
+        <nav className="bg-[#0a1a2f] shadow-lg rounded-2xl px-6 py-3 flex justify-between items-center">
 
           {/* LOGO */}
           <Link href="/" className="text-xl font-bold text-white">
             Vani Village
           </Link>
 
-          {/* DESKTOP MENU */}
-          <div className="hidden md:flex items-center gap-1">
+          {/* DESKTOP NAV */}
+          <div className="hidden md:flex items-center space-x-1">
 
             {navItems.map((item) => {
 
-              // ✅ External
+              // ✅ EXTERNAL LINK
               if (item.external) {
                 return (
                   <a
@@ -132,46 +140,57 @@ export default function Navbar() {
                 );
               }
 
-              // ✅ Dropdown WITH CLICKABLE PARENT LINK
+              // ✅ DROPDOWN
               if (item.dropdown) {
                 return (
-                  <div key={item.name} className="relative group">
+                  <div key={item.name} className="relative" {...dropdownHandlers(item.name)}>
 
                     <Link
                       href={item.hash || "#"}
-                      className="rounded-full px-3 py-1.5 text-sm font-medium text-neutral-300 hover:text-white"
+                      className="px-3 py-1.5 rounded-full text-sm font-medium text-neutral-300 hover:text-white"
                     >
                       {item.name}
                     </Link>
 
-                    <div className="hidden group-hover:block absolute left-0 mt-2 bg-black/70 border border-white/10 rounded-xl p-2 shadow-xl backdrop-blur-xl w-56">
-                      {item.children.map((sub) =>
-                        sub.url ? (
-                          <a
-                            key={sub.name}
-                            href={sub.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block px-4 py-2 text-sm text-neutral-200 hover:bg-white/10 rounded-lg"
-                          >
-                            {sub.name}
-                          </a>
-                        ) : (
-                          <Link
-                            key={sub.name}
-                            href={sub.hash}
-                            className="block px-4 py-2 text-sm text-neutral-200 hover:bg-white/10 rounded-lg"
-                          >
-                            {sub.name}
-                          </Link>
-                        )
+                    <AnimatePresence>
+                      {openDropdown === item.name && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 6 }}
+                          transition={{ duration: 0.15 }}
+                          className="absolute left-0 mt-2 w-56 bg-black/70 backdrop-blur-xl border border-white/10 rounded-xl p-2 shadow-xl"
+                        >
+                          {item.children.map((sub) =>
+                            sub.url ? (
+                              <a
+                                key={sub.name}
+                                href={sub.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block px-4 py-2 text-sm text-neutral-200 hover:bg-white/10 rounded-lg"
+                              >
+                                {sub.name}
+                              </a>
+                            ) : (
+                              <Link
+                                key={sub.name}
+                                href={sub.hash}
+                                className="block px-4 py-2 text-sm text-neutral-200 hover:bg-white/10 rounded-lg"
+                              >
+                                {sub.name}
+                              </Link>
+                            )
+                          )}
+                        </motion.div>
                       )}
-                    </div>
+                    </AnimatePresence>
+
                   </div>
                 );
               }
 
-              // ✅ Regular Link
+              // ✅ NORMAL LINK
               const isActive =
                 pathname === "/" ? activeSection === item.sectionId : pathname === item.hash;
 
@@ -179,13 +198,16 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.hash}
-                  className={`relative px-3 py-1.5 rounded-full text-sm font-medium transition
+                  className={`relative px-3 py-1.5 rounded-full text-sm font-medium
                   ${isActive ? "text-black" : "text-neutral-300 hover:text-white"}`}
                 >
                   {isActive && (
-                    <motion.span layoutId="bubble" className="absolute inset-0 bg-white rounded-full" />
+                    <motion.span
+                      layoutId="bubble"
+                      className="absolute inset-0 bg-white rounded-full"
+                    />
                   )}
-                  <span className="relative z-20">{item.name}</span>
+                  <span className="relative z-10">{item.name}</span>
                 </Link>
               );
             })}
@@ -195,10 +217,11 @@ export default function Navbar() {
           {/* MOBILE BUTTON */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-full text-neutral-300 hover:bg-white/10"
+            className="md:hidden p-2 text-neutral-300 hover:bg-white/10 rounded-full"
           >
             <Menu size={24} />
           </button>
+
         </nav>
       </motion.header>
 
@@ -206,61 +229,58 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            variants={menuVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="fixed inset-x-0 top-20 z-40 p-4 md:hidden"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="fixed top-24 inset-x-0 z-40 px-4 md:hidden"
           >
-            <div className="rounded-2xl bg-black/30 backdrop-blur-2xl border border-white/10 p-5 shadow-xl">
-              <div className="flex flex-col gap-3">
+            <div className="bg-black/30 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-xl">
 
-                {navItems.map((item) =>
-                  item.external ? (
-                    <a
-                      key={item.name}
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="px-4 py-3 rounded-lg text-lg font-bold bg-yellow-400 text-black"
-                    >
-                      {item.name}
-                    </a>
-                  ) : item.dropdown ? (
-                    <div key={item.name}>
-                      <Link
-                        href={item.hash}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block px-4 py-3 rounded-lg text-lg text-neutral-200 hover:bg-white/10"
-                      >
-                        {item.name}
-                      </Link>
-
-                      {item.children.map((sub) => (
-                        <Link
-                          key={sub.name}
-                          href={sub.hash}
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="ml-4 block px-4 py-2 text-sm text-neutral-300 hover:bg-white/10 rounded-lg"
-                        >
-                          {sub.name}
-                        </Link>
-                      ))}
-                    </div>
-                  ) : (
+              {navItems.map((item) =>
+                item.external ? (
+                  <a
+                    key={item.name}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block w-full rounded-lg text-center py-3 text-lg font-bold bg-yellow-400 text-black mb-2"
+                  >
+                    {item.name}
+                  </a>
+                ) : item.dropdown ? (
+                  <div key={item.name}>
                     <Link
-                      key={item.name}
-                      href={item.hash}
+                      href={item.hash || "#"}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="px-4 py-3 rounded-lg text-lg text-neutral-200 hover:bg-white/10"
+                      className="block px-4 py-3 text-lg text-neutral-200 hover:bg-white/10 rounded-lg"
                     >
                       {item.name}
                     </Link>
-                  )
-                )}
 
-              </div>
+                    {item.children.map((sub) => (
+                      <Link
+                        key={sub.name}
+                        href={sub.hash}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="ml-5 block px-4 py-2 text-sm text-neutral-300 hover:bg-white/10 rounded-lg"
+                      >
+                        {sub.name}
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.hash}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block px-4 py-3 text-lg text-neutral-200 hover:bg-white/10 rounded-lg"
+                  >
+                    {item.name}
+                  </Link>
+                )
+              )}
+
             </div>
           </motion.div>
         )}
